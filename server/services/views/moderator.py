@@ -13,8 +13,7 @@ class Moderator(HTTPMethodView):
         try:
             data = ApproveTeamSchema().load(request.json)
         except ValidationError as e:
-            return json({"status": 422,
-                         "message": e})
+            return json(e.messages, 422)
 
         parser_client = BaseClientParser()
         response = await parser_client.patch(api_uri=f'approve-team/{related_team_id}', data=data)
