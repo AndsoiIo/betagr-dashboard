@@ -11,8 +11,8 @@ class Engine:
     @classmethod
     async def init(cls):
         cls._engine = await aiopg.sa.create_engine(dsn=cls._dsn,
-                                                   minsize=config.DB_POOL_SIZE_MIN,
-                                                   maxsize=config.DB_POOL_SIZE_MAX)
+                                                   minsize=config.DATABASE.get('pool_size_min'),
+                                                   maxsize=config.DATABASE.get('pool_size_max'))
 
     @classmethod
     async def acquire(cls):

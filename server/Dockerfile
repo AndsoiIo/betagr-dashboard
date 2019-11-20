@@ -2,12 +2,6 @@ FROM python:3.7
 
 WORKDIR /server/
 
-EXPOSE 5000
-RUN apt-get update && apt-get -y install gcc
+ADD . /server/
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . /server/
-
-CMD [ "python", "app.py" ]
+RUN pip install -r server/requirements.txt

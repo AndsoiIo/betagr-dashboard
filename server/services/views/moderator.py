@@ -1,24 +1,23 @@
 from sanic.exceptions import abort
 from sanic.views import HTTPMethodView
-from sanic.response import text
+from sanic.response import json
+import json as json_build_in
 
 from services.form import ApproveTeamSchema
 from marshmallow.exceptions import ValidationError
-
-from engine import Connection
-from services.utils import approve_team
+from common.rest_client.base_client_parser import BaseClientParser
 
 
 class Moderator(HTTPMethodView):
-    async def patch(self, request, real_team_id, *args, **kwargs):
+    async def patch(self, request, related_team_id, *args, **kwargs):
         try:
-            data = ApproveTeamSchema().load(request.form)
-            data['real_team_id'] = real_team_id
-
+            data = ApproveTeamSchema().load(request.json)
         except ValidationError as e:
-            return text(e, 400)
-        else:
-            async with Connection() as conn:
-                if not await approve_team(conn, data):
-                    return text("Unprocessable Entity", 422)
-                return text("Ok", 204)
+            return json({"status": 422,
+                         "message": e})
+
+        parser_client = BaseClientParser()
+        response = await parser_client.patch(api_uri=f'approve-team/{related_team_id}', data=data)
+
+        return json(response.json)
+

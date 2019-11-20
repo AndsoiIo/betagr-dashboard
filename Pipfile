@@ -6,14 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-sanic = "*"
-aiohttp = "*"
-marshmallow = "*"
-sqlalchemy = "*"
-aiopg = "*"
-betagr-common = "==0.1.1"
-pytest = "*"
-pytest-sanic = "*"
+aiohttp = "==3.6.2"
+aiopg = "==1.0.0"
+marshmallow = "==3.2.2"
+pytest = "==5.2.2"
+pytest-sanic = "==1.1.2"
+sanic = "==19.9.0"
+SQLAlchemy = "==1.3.11"
+betagr-common = "==0.1.6"
 
 [requires]
 python_version = "3.7"
