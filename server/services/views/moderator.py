@@ -16,7 +16,7 @@ class Moderator(HTTPMethodView):
             return json(e.messages, 422)
 
         parser_client = BaseClientParser()
-        response = await parser_client.patch(api_uri=f'approve-team/{related_team_id}', data=data)
+        response = await parser_client.approve_team(team_id=related_team_id, data=data)
 
-        return json(response.json)
+        return json(response.reason, response.status)
 

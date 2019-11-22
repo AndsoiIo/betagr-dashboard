@@ -11,7 +11,7 @@ from routes import add_routes
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 loop = asyncio.get_event_loop()
 
-app = Sanic(__name__, load_env='DASHBOARD_')
+app = Sanic(__name__)
 add_routes(app)
 
 if config.DEBUG:
