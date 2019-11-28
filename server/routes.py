@@ -1,5 +1,5 @@
 from listeners import acquire_con, close_con
-from services.views.change_status import moderate_team, approve_team
+from services.views.change_status_team import moderate_team, approve_team
 
 
 def add_routes(app):
