@@ -24,7 +24,4 @@ if config.DEBUG:
 
 if __name__ == '__main__':
     app.run(host=config.DASHBOARD.get('host'),
-            port=config.DASHBOARD.get('port'),
-            workers=config.DASHBOARD.get('workers'),
-            debug=config.DEBUG,
-            access_log=config.DASHBOARD.get('access_log'))
+            port=config.DASHBOARD.get('port'))

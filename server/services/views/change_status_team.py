@@ -15,10 +15,8 @@ async def moderate_team(request, related_team_id):
         data = ChangeStatusTeamSchema().load(request.json)
     except ValidationError as e:
         return json(e.messages, 422)
-
     response = await parser_client.change_status_team(team_id=related_team_id, json=data)
-
-    return json(response.reason, response.status)
+    return json(response.json, response.status)
 
 
 @authorized_and_user_has("approve")
@@ -31,4 +29,4 @@ async def approve_team(request, related_team_id):
 
     response = await parser_client.change_status_team(team_id=related_team_id, json=data)
 
-    return json(response.reason, response.status)
+    return json(response.json, response.status)
