@@ -1,6 +1,6 @@
 aiohttp==3.6.2
 aiopg==1.0.0
-betagr-common==0.1.7
+git+git://github.com/AndsoiIo/betagr-common@dev#egg=betagr-common
 marshmallow==3.2.2
 pytest==5.2.2
 pytest-sanic==1.1.2

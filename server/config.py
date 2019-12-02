@@ -12,8 +12,8 @@ DATABASE = {
     'pool_size_max': int(os.getenv("DB_POOL_SIZE_MAX", 3))
 }
 
-DASHBOARD = {'host': os.getenv('DASHBOARD_HOST', 'localhost'),
-             'port': int(os.getenv('DASHBOARD_PORT', 5000)),
+DASHBOARD = {'host': os.getenv('DASHBOARD_API_HOST', 'localhost'),
+             'port': int(os.getenv('DASHBOARD_API_PORT', 5000)),
              'workers': int(os.getenv('DASHBOARD_WORKERS', 1)),
              'access_log': os.getenv('DASHBOARD_ACCESS_LOG', False)}
 
