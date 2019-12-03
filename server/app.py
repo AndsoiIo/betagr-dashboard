@@ -14,6 +14,7 @@ loop = asyncio.get_event_loop()
 app = Sanic(__name__)
 add_routes(app)
 
+
 if config.DEBUG:
 
     @app.middleware('response')
