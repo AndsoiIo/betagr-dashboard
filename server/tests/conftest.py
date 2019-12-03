@@ -31,10 +31,10 @@ async def connection():
 
 @pytest.fixture
 async def mock_resp(test_cli):
-    class Empty:
+    class Response:
         status = 200
         json = "Ok"
 
     future = asyncio.Future()
-    future.set_result(Empty())
+    future.set_result(Response())
     return future
