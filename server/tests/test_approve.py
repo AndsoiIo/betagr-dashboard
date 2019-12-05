@@ -2,7 +2,7 @@ import pytest
 from unittest import mock
 
 from common.rest_client.base_client_sso import BaseClientSSO
-from common.rest_client.base_client_parser import BaseClientBettingData
+from common.rest_client.base_client_betting_data import BaseClientBettingData
 
 
 @pytest.mark.approve

@@ -1,6 +1,6 @@
 from sanic.response import json
 from marshmallow.exceptions import ValidationError
-from common.rest_client.base_client_parser import BaseClientBettingData
+from common.rest_client.base_client_betting_data import BaseClientBettingData
 from common.utils.decorators import authorized_and_user_has
 
 from services.forms import ModerateTeamSchema
