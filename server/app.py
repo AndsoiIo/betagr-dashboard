@@ -2,16 +2,17 @@ import asyncio
 import uvloop
 import logging
 
-import config
-
 from sanic import Sanic
 from routes import add_routes
+from sanic_cors import CORS
 
+import config
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 loop = asyncio.get_event_loop()
 
 app = Sanic(__name__)
+cors = CORS(app, automatic_options=True, supports_credentials=True)
 add_routes(app)
 
 if config.DEBUG:
