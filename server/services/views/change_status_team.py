@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from sanic.response import json
 from marshmallow.exceptions import ValidationError
 from common.rest_client.base_client_betting_data import BaseClientBettingData
@@ -14,7 +16,7 @@ async def moderate_team(request, related_team_id):
     try:
         data = ModerateTeamSchema().load(request.json)
     except ValidationError as e:
-        return json(e.messages, 422)
+        return json(e.messages, HTTPStatus.UNPROCESSABLE_ENTITY)
     response = await client.change_status_team(team_id=related_team_id, json=data)
     return json(response.json, response.status)
 
