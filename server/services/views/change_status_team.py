@@ -7,11 +7,10 @@ from common.utils.decorators import authorized_and_user_has
 
 from services.forms import ModerateTeamSchema
 
-client = BaseClientBettingData()
-
 
 @authorized_and_user_has("moderate")
 async def moderate_team(request, related_team_id):
+    client = BaseClientBettingData()
     request.json["status"] = "moderated"
     try:
         data = ModerateTeamSchema().load(request.json)
@@ -23,5 +22,6 @@ async def moderate_team(request, related_team_id):
 
 @authorized_and_user_has("approve")
 async def approve_team(request, related_team_id):
+    client = BaseClientBettingData()
     response = await client.change_status_team(team_id=related_team_id, json={"status": "approved"})
     return json(response.json, response.status)
